@@ -1,0 +1,18 @@
+.Weather h1 {
+  font-size: 20px;
+  padding-bottom: 5px;
+  text-align: right;
+}
+.Weather h2 {
+  font-size: 20px;
+  text-align: right;
+}
+.Weather .detail {
+  padding-top: 10px;
+}
+.Weather.time {
+  text-align: center;
+}
+.Weather .col-5 {
+  font-size: 20px;
+}
