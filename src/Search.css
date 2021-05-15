@@ -1,0 +1,18 @@
+.container {
+  text-align: right;
+  font-size: 10px;
+}
+.display {
+  text-align: left;
+}
+.Search {
+  padding-top: 5px;
+}
+.Tempdisp {
+  font-size: 20px;
+  padding-top: 30px;
+}
+ul {
+  font-size: 20px;
+  padding-top: 20px;
+}

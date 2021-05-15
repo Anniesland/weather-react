@@ -5,13 +5,13 @@ export default function Forecast1() {
   return (
     <div className="Forecast1">
       <div className="row">
-          <div className="col-1"> </div>
+          <div className="col-2"> </div>
         <div className="col-3">
           <h3>
             <em> Forecast </em>
           </h3>
         </div>
-        <div className="col-5">
+        <div className="col-4">
           <ul class="forecast" style={{ listStyleType: "none" }}>
             <li id="projection1"> 🌀 Monday</li>
             <li id="projection2"> 🌞 Tuesday</li>

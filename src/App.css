@@ -1,5 +1,7 @@
 .App {
   box-sizing: inherit;
   width: 80%;
-  margin: auto;
+  height: 80%;
+  margin: none;
+  display: contents;
 }

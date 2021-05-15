@@ -4,7 +4,7 @@ import "./Tempdisp.css";
 export default function Tempdisp() {
   return (
     <div className="Tempdisp">
-      <p>6ºC</p>
+     <br /> <p><strong>6ºC</strong></p>
     </div>
   );
 }
