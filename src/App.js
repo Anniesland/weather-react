@@ -1,7 +1,6 @@
 import './App.css';
 import background from "./newGraphic.png";
 import Weather from "./Weather";
-import Forecast1 from "./Forecast1";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -21,7 +20,8 @@ function App() {
         
         <Weather />
 <hr />
-        <Forecast1 />
+      
+       
       </div>
       </div>
     </div>

@@ -3,22 +3,27 @@ import axios from "axios";
 import "./Search.css";
 import Conversion from "./Conversion";
 import Newdate from "./Newdate";
+import WeatherInfo from "./WeatherInfo";
+import Forecast2 from "./Forecast2";
+
 
 export default function Search(props) {
-    let [city, setCity] = useState("");
-    let [temperature, setTemperature] = useState("");
-    let [description, setDescription] = useState("");
-    let [humidity, setHumidity] = useState("");
-    let [wind, setWind] = useState("");
-    
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
-    function handleResponse(response) {
-     setTemperature(response.data.main.temp);
-     setDescription(response.data.weather[0].description);
-     setHumidity(response.data.main.humidity);
-     setWind(response.data.wind.speed);
-     new Date(response.data.dt * 1000);
-    }
+  function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      coordinates: response.data.coord,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
+      description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+    });
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -49,7 +54,7 @@ export default function Search(props) {
         </li>
         </h2>
           <br />
-          <h1 id="defaultCity"> {city} </h1>
+          <h1 id="defaultCity"> {weatherData.city} </h1>
          
     <div className="Search"  onSubmit={handleSubmit}>
       <form id="Search">
@@ -65,30 +70,32 @@ export default function Search(props) {
         <button id="searchButton"
         style={{ height: "30px", width: "50px" }}>{"search "}</button>
       </form>
+      <WeatherInfo data={weatherData} />
+        <Forecast2 coordinates={weatherData.coordinates} />
         </div>
           </div>
 
         <div className="col-6 display">
             <div className="Tempdisp">
-      <p> <strong>{Math.round(temperature)} ºC </strong> </p>
+      <p> <strong>{Math.round(weatherData.temperature)} ºC </strong> </p>
     </div>
     <Conversion />
     
-              <ul class="detail" style={{ listStyleType: "none" }}>
+              <ul className="detail" style={{ listStyleType: "none" }}>
             <li>
             
-              <span id="humidity1">Humidity: {humidity}%</span>
+              <span id="humidity1">Humidity: {weatherData.humidity}%</span>
             </li>
             <li>
              
-              <span id="wind1">Wind: {wind}mph</span>
+              <span id="wind1">Wind: {weatherData.wind}mph</span>
             </li>
           </ul>
         
 
 <br />
           <p id="description">
-            <em> {description} </em>
+            <em> {weatherData.description} </em>
           </p>
         
       </div>

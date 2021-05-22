@@ -1,9 +1,21 @@
 import React from "react";
-import "./Forecast1.css";
+import "./Forecast2.css";
+import axios from "axios";
 
-export default function Forecast1() {
+export default function Forecast2(props) {
+ 
+  function handleResponse(response) {
+    console.log(response.data);
+  }
+
+    let apiKey = "fc432415aa7fe94fca563ee851cbde80";
+      let latitude = props.coordinates.lat;
+      let longitude = props.coordinates.lon;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(handleResponse);
+  
   return (
-    <div className="Forecast1">
+    <div className="Forecast2">
       <div className="row">
           <div className="col-2"> </div>
         <div className="col-3">
@@ -12,7 +24,7 @@ export default function Forecast1() {
           </h3>
         </div>
         <div className="col-4">
-          <ul class="forecast" style={{ listStyleType: "none" }}>
+          <ul className="forecast" style={{ listStyleType: "none" }}>
             <li id="projection1"> 🌀 Monday</li>
             <li id="projection2"> 🌞 Tuesday</li>
             <li id="projection3"> ☀  Wednesday</li>
@@ -25,4 +37,10 @@ export default function Forecast1() {
       </div>
     </div>
   );
-}
+
+ }
+
+
+
+
+

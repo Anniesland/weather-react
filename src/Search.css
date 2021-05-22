@@ -16,3 +16,8 @@ ul {
   font-size: 20px;
   padding-top: 20px;
 }
+canvas {
+  size: 12px;
+  width: 12px;
+  font-weight: inherit;
+}
