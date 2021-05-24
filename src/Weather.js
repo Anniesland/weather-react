@@ -8,7 +8,10 @@ export default function Weather() {
     <div className="Weather">
            
           <Search defaultCity="Donegal" />
-       
+
+        <footer className="Footer"> <a href="https://github.com/Anniesland/weather-react"> Open source code</a> by Anniesland
+        </footer>
+        
     </div>
   );
 }

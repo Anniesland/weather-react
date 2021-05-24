@@ -13,15 +13,11 @@ function App() {
         style={{
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "600px",
+          backgroundSize: "550px",
           backgroundPosition: "center"
         }}
       >
-        
         <Weather />
-<hr />
-      
-       
       </div>
       </div>
     </div>

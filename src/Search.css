@@ -10,14 +10,17 @@
 }
 .Tempdisp {
   font-size: 20px;
-  padding-top: 30px;
-}
-ul {
-  font-size: 20px;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 canvas {
-  size: 12px;
-  width: 12px;
+  size: 25px;
+  width: 25px;
   font-weight: inherit;
+}
+#defaultCity {
+  font-size: 30px;
+}
+.detail {
+  padding-top: 10px;
+  font-size: 20px;
 }
