@@ -69,16 +69,11 @@ export default function Search(props) {
             </div>
             <div className="col-6 display">
               <div className="Tempdisp">
-                <p>
                   {" "}
                   <strong>
                     <br />
-                    <br />
-                    {Math.round(weatherData.temperature)} ºC{" "}
-                  </strong>{" "}
-                </p>
+              <Conversion celcius={weatherData.temperature} /> </strong>{" "} 
               </div>
-              <Conversion />
               <div className="detail">
                   <span id="humidity1">Humidity: {weatherData.humidity}%</span>
                <br />
