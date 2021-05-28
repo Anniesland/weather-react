@@ -42,10 +42,10 @@ return (
 } else {
 
 let apiKey = "fc432415aa7fe94fca563ee851cbde80";
-      let latitude = props.coordinates.lat;
-      let longitude = props.coordinates.lon;
-      let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-      axios.get(apiUrl).then(handleResponse);
+let latitude = props.coordinates.lat;
+let longitude = props.coordinates.lon;
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(handleResponse);
     
 
 return null;

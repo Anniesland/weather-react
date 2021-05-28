@@ -9,6 +9,7 @@ import Forecast2 from "./Forecast2";
 export default function Search(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -28,11 +29,20 @@ export default function Search(props) {
   }
   function handleCityChange(event) {
     setCity(event.target.value);
-  }
+  }  
   function search() {
     const apiKey = "fc432415aa7fe94fca563ee851cbde80";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
+  }
+  function searchPosition(position) {
+    const apiKey = "fc432415aa7fe94fca563ee851cbde80";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+  function retreivePosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchPosition);
   }
   if (weatherData.ready) {
     return (
@@ -59,9 +69,16 @@ export default function Search(props) {
                   <br />
                   <button
                     id="searchButton"
-                    style={{ height: "30px", width: "60px" }}
+                    style={{ height: "30px", width: "70px" }}
                   >
                     {"SEARCH "}
+                  </button>
+                  <button
+                    id="locationButton"
+                    onClick={retreivePosition}
+                    style={{ height: "30px", width: "70px" }}
+                  >
+                    {"LOCATION "}
                   </button>
                 </form>
                 <br />
@@ -80,7 +97,7 @@ export default function Search(props) {
                   <span id="wind1">Wind: {weatherData.wind}mph</span>
               </div>
               <p id="description">
-                <em> <WeatherIcon code={weatherData.icon} />  {weatherData.description} </em>
+                <em> {weatherData.description} <WeatherIcon code={weatherData.icon} /> </em>
               </p>
               <br />
             </div>
