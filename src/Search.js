@@ -13,7 +13,6 @@ export default function Search(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
@@ -21,29 +20,35 @@ export default function Search(props) {
       icon: response.data.weather[0].icon,
       wind: response.data.wind.speed,
       city: response.data.name,
+      coordinates: response.data.coord,
     });
   }
-  function handleSubmit(event) {
-    event.preventDefault();
-    search();
-  }
-  function handleCityChange(event) {
-    setCity(event.target.value);
-  }  
+ 
   function search() {
     const apiKey = "fc432415aa7fe94fca563ee851cbde80";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
+
+   function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }  
+
   function searchPosition(position) {
     const apiKey = "fc432415aa7fe94fca563ee851cbde80";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
   function retreivePosition(event) {
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(searchPosition);
   }
+ 
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -56,7 +61,7 @@ export default function Search(props) {
                 </li>
               </h2>
               <br />
-              <h1 id="defaultCity"> {weatherData.city} </h1>
+              <h1 id="defaultCity"> {weatherData.city}  </h1>
               <div className="Search" onSubmit={handleSubmit}>
                 <form id="Search">
                   <input
